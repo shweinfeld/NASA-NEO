@@ -17,6 +17,20 @@ public class NeoFeed {
         String nasaJplUrl;
         @SerializedName("is_potentially_hazardous_asteroid")
         boolean hazardous;
+        @SerializedName("close_approach_data")
+        List<CloseApproachData> closeApproachData;
+    }
+
+    class CloseApproachData {
+        @SerializedName("close_approach_date")
+        String closeApproachDate;
+        @SerializedName("miss_distance")
+        MissDistance missDistance;
+
+    }
+
+    class MissDistance {
+        double lunar;
     }
 
 }
