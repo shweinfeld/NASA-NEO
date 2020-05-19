@@ -8,23 +8,26 @@ import java.awt.*;
 
 public class NeoFrame extends JFrame {
 
-    public NeoFrame() {
+    public NeoFrame(NearEarthObjectView view, NeoController controller) {
         setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("NEO Today");
         setLayout(new BorderLayout());
 
-        NearEarthObjectView view = new NearEarthObjectView();
+
         add(view, BorderLayout.CENTER);
 
-        NeoService service = new NeoServiceFactory().getInstance();
 
-        NeoController controller = new NeoController(service, view);
         controller.requestData();
     }
 
     public static void main(String[] args) {
-        new NeoFrame().setVisible(true);
+
+        NearEarthObjectView view = new NearEarthObjectView();
+        NeoService service = new NeoServiceFactory().getInstance();
+
+        NeoController controller = new NeoController(service, view);
+        new NeoFrame(view, controller).setVisible(true);
 
     }
 
