@@ -17,11 +17,7 @@ public class NeoFrame extends JFrame {
         NearEarthObjectView view = new NearEarthObjectView();
         add(view, BorderLayout.CENTER);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.nasa.gov/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        NeoService service = retrofit.create(NeoService.class);
+        NeoService service = new NeoServiceFactory().getInstance();
 
         NeoController controller = new NeoController(service, view);
         controller.requestData();

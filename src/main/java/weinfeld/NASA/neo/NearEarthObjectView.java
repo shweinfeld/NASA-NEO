@@ -29,7 +29,7 @@ public class NearEarthObjectView extends JComponent {
         g.setColor(Color.red);
         g.fillOval(getWidth()-10, 200, 10, 10);
 
-        double lunars = neo.closeApproachData.get(0).missDistance.lunar;
+        double lunars = neo.closestLunarDistance();
         double uiDistance = getWidth() - 10;
         double moonX = uiDistance / lunars;
 

@@ -8,7 +8,7 @@ import retrofit2.Response;
  * Request data from the NeoService and populate the View
  */
 
-public class NeoController {
+public class NeoController implements Callback<NeoFeed> {
 
         private NeoService service;
         private NearEarthObjectView view;
@@ -19,12 +19,13 @@ public class NeoController {
         }
 
         public void requestData() {
-            service.getAsteroids("2020-05-05", "2020-05-05").enqueue(new Callback<NeoFeed>() {
+            service.getAsteroids("2020-05-05", "2020-05-05").enqueue(this);
+        }
 
                 @Override
                 public void onResponse(Call<NeoFeed> call, Response<NeoFeed> response) {
 
-                    NeoFeed.NearEarthObject nearEarthObject = response.body().nearEarthObjects.get("2020-05-05").get(0);
+                    NeoFeed.NearEarthObject nearEarthObject = response.body().getFirstObject("2020-05-05");
                     view.setNearEarthObject(nearEarthObject);
                 }
 
@@ -32,6 +33,5 @@ public class NeoController {
                 public void onFailure(Call<NeoFeed> call, Throwable t) {
                     t.printStackTrace();
                 }
-            });
-        }
+
 }
