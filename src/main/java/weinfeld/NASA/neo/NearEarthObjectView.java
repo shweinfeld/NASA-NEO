@@ -1,11 +1,13 @@
 package weinfeld.NASA.neo;
 
+import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * Display the NearEarthObject
  */
+@Singleton
 public class NearEarthObjectView extends JComponent {
 
     public void setNearEarthObject(NeoFeed.NearEarthObject neo) {

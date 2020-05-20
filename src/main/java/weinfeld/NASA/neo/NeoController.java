@@ -1,5 +1,6 @@
 package weinfeld.NASA.neo;
 
+import com.google.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,6 +14,7 @@ public class NeoController implements Callback<NeoFeed> {
         private NeoService service;
         private NearEarthObjectView view;
 
+        @Inject
         public NeoController(NeoService service, NearEarthObjectView view) {
              this.service = service;
              this.view = view;

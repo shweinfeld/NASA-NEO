@@ -1,5 +1,7 @@
 package weinfeld.NASA.neo;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,11 +25,15 @@ public class NeoFrame extends JFrame {
 
     public static void main(String[] args) {
 
-        NearEarthObjectView view = new NearEarthObjectView();
-        NeoService service = new NeoServiceFactory().getInstance();
+        Injector injector = Guice.createInjector(new NeoFrameModule());
+        //NearEarthObjectView view = new NearEarthObjectView();
+        //NeoService service = new NeoServiceFactory().getInstance();
 
-        NeoController controller = new NeoController(service, view);
-        new NeoFrame(view, controller).setVisible(true);
+        //NeoController controller = new NeoController(service, view);
+
+        //NeoFrame neoFrame = new NeoFrame(view, controller);
+        NeoFrame neoFrame = injector.getInstance(NeoFrame.class);
+        neoFrame.setVisible(true);
 
     }
 
