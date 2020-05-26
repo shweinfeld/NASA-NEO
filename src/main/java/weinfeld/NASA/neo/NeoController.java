@@ -1,6 +1,6 @@
 package weinfeld.NASA.neo;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

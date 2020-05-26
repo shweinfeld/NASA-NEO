@@ -1,5 +1,6 @@
 package weinfeld.NASA.neo;
 
+import com.google.inject.Inject;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
